@@ -17,6 +17,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
+          path: ./
           sparse-checkout: ruby
           sparse-checkout-cone-mode: false
 
@@ -28,6 +29,7 @@ jobs:
           ref: main
           sparse-checkout: openapi.yaml
           sparse-checkout-cone-mode: false
+
       - name: test
         run: |
           ls -al
