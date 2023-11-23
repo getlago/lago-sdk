@@ -50,6 +50,8 @@ jobs:
           openapi-file: openapi/openapi.yaml
           config-file: ruby/generator/config.yaml
           template-dir: ruby/generator
+          command-args: |
+            -o ruby
 
       - name: Open PR with changes on Lago Ruby Repository
         run: |
