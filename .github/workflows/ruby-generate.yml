@@ -17,11 +17,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          path: ./
           sparse-checkout: ruby
           sparse-checkout-cone-mode: false
-      - name: test
-        run: ls -al
 
       - name: Checkout Lago OpenApi Repository
         uses: actions/checkout@v4
@@ -29,7 +26,6 @@ jobs:
           repository: getlago/lago-openapi
           token: ${{ secrets.GH_TOKEN }}
           ref: main
-          path: ./
           sparse-checkout: openapi.yaml
           sparse-checkout-cone-mode: false
 
@@ -41,7 +37,7 @@ jobs:
           [[ ! -z "${{ github.event.inputs.version }}" ]] && CURRENT_VERSION=${{ github.event.inputs.version }} || CURRENT_VERSION=$OPENAPI_VERSION
 
           # Set version into generator config
-          sed -i "s/API_VERSION/$CURRENT_VERSION/" generator/config.yaml
+          sed -i "s/API_VERSION/$CURRENT_VERSION/" ruby/generator/config.yaml
 
           echo "api_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
 
@@ -50,8 +46,8 @@ jobs:
         with:
           generator: ruby
           openapi-file: openapi.yaml
-          config-file: generator/config.yaml
-          template-dir: generator
+          config-file: ruby/generator/config.yaml
+          template-dir: ruby/generator
 
       - name: Open PR with changes on Lago Ruby Repository
         run: |
@@ -59,8 +55,8 @@ jobs:
           BRANCH_NAME="version-${API_VERSION//./-}"
           COMMIT_MESSAGE="misc(ruby): Version v$API_VERSION"
 
-          # Move into client folder
-          cd ruby-client
+          # Move into ruby folder
+          cd ruby
 
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
