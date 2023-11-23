@@ -1,4 +1,4 @@
-name: Push to RubyGems
+name: '[Ruby] Push to RubyGems'
 
 on: workflow_dispatch
 
@@ -28,11 +28,17 @@ jobs:
       packages: write
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+      with:
+        sparse-checkout:
+          ruby
+        sparse-checkout-cone-mode: false      
+
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.2'
+        bundler-cache: true
 
     - name: Publish to RubyGems
       run: |
