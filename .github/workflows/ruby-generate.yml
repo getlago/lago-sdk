@@ -70,9 +70,11 @@ jobs:
           git push origin $BRANCH_NAME
 
           # Store credentials for the Github CLI
+          echo "${{ secrets.GH_TOKEN }}" > access_token.txt
 
           # Authorize GitHub CLI for the current repository and
-          # create a pull-requests containing the updates
+          # create a pull-requests containing the updates.
+          gh auth login --with-token < access_token.txt
           gh pr create \
             --body "" \
             --title "$COMMIT_MESSAGE" \
