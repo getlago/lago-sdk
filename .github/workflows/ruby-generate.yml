@@ -29,10 +29,10 @@ jobs:
           sparse-checkout: openapi.yaml
           sparse-checkout-cone-mode: false
       - name: test
-          run: |
-            ls -al
-            cd ruby
-            ls -al
+        run: |
+          ls -al
+          cd ruby
+          ls -al
 
       - name: Init API version
         id: init_version
