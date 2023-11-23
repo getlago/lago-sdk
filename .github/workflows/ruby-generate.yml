@@ -20,6 +20,8 @@ jobs:
           path: ./
           sparse-checkout: ruby
           sparse-checkout-cone-mode: false
+      - name: test
+        run: ls -al
 
       - name: Checkout Lago OpenApi Repository
         uses: actions/checkout@v4
