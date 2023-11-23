@@ -10,8 +10,6 @@ on:
 jobs:
   generate-ruby-sdk:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     name: Build Lago Ruby SDK
     steps:
       - name: Checkout Repository
