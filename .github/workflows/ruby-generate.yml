@@ -17,13 +17,14 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          path: ./
+          path: ruby
           sparse-checkout: ruby
           sparse-checkout-cone-mode: false
 
       - name: Checkout Lago OpenApi Repository
         uses: actions/checkout@v4
         with:
+          path: openapi
           repository: getlago/lago-openapi
           token: ${{ secrets.GH_TOKEN }}
           ref: main
