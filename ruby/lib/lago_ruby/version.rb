@@ -11,5 +11,5 @@ OpenAPI Generator version: 7.2.0-SNAPSHOT
 =end
 
 module LagoAPI
-  VERSION = '0.52.0-beta'
+  VERSION = 'test'
 end

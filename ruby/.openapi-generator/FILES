@@ -407,16 +407,6 @@ lib/lago_ruby/models/webhook_endpoint_object.rb
 lib/lago_ruby/models/webhook_endpoint_update_input.rb
 lib/lago_ruby/models/webhook_endpoints_paginated.rb
 lib/lago_ruby/version.rb
-spec/api/analytics_api_spec.rb
 spec/api_client_spec.rb
 spec/configuration_spec.rb
-spec/models/generate_customer_checkout_url200_response_spec.rb
-spec/models/gross_revenue_object_spec.rb
-spec/models/gross_revenues_spec.rb
-spec/models/invoiced_usage_object_spec.rb
-spec/models/invoiced_usages_spec.rb
-spec/models/mrr_object_spec.rb
-spec/models/mrrs_spec.rb
-spec/models/outstanding_invoice_object_spec.rb
-spec/models/outstanding_invoices_spec.rb
 spec/spec_helper.rb
