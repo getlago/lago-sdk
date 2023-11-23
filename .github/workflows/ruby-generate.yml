@@ -47,7 +47,7 @@ jobs:
         uses: openapi-generators/openapitools-generator-action@v1
         with:
           generator: ruby
-          openapi-file: openapi.yaml
+          openapi-file: openapi/openapi.yaml
           config-file: ruby/generator/config.yaml
           template-dir: ruby/generator
 
