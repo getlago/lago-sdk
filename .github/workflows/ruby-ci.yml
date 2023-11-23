@@ -24,8 +24,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          sparse-checkout:
-            ruby
+          path: ./
+          sparse-checkout: ruby
           sparse-checkout-cone-mode: false
 
       - name: Set up Ruby ${{ matrix.ruby-version }}

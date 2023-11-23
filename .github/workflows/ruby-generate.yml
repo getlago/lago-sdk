@@ -17,8 +17,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          sparse-checkout:
-            ruby
+          path: ./
+          sparse-checkout: ruby
           sparse-checkout-cone-mode: false
 
       - name: Checkout Lago OpenApi Repository
@@ -27,8 +27,8 @@ jobs:
           repository: getlago/lago-openapi
           token: ${{ secrets.GH_TOKEN }}
           ref: main
-          sparse-checkout:
-            openapi.yaml
+          path: ./
+          sparse-checkout: openapi.yaml
           sparse-checkout-cone-mode: false
 
       - name: Init API version
