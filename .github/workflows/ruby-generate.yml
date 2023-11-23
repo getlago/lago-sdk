@@ -53,7 +53,7 @@ jobs:
           command-args: |
             -o ruby
 
-      - name: Open PR with changes on Lago Ruby Repository
+      - name: Open PR with changes on Lago SDK Repository
         run: |
           API_VERSION="${{ steps.init_version.outputs.api_version }}"
           BRANCH_NAME="version-${API_VERSION//./-}"
@@ -72,11 +72,9 @@ jobs:
           git push origin $BRANCH_NAME
 
           # Store credentials for the Github CLI
-          echo "${{ secrets.GH_TOKEN }}" > access_token.txt
 
           # Authorize GitHub CLI for the current repository and
-          # create a pull-requests containing the updates.
-          gh auth login --with-token < access_token.txt
+          # create a pull-requests containing the updates
           gh pr create \
             --body "" \
             --title "$COMMIT_MESSAGE" \
