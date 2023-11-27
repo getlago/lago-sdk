@@ -2,13 +2,13 @@ globalProperties:
   apiTests: true
   modelTests: true
   gitUserId: getlago
-  gitRepoId: lago-ruby
+  gitRepoId: lago-sdk
 
 additionalProperties:
   gemAuthor: Lago
   gemAuthorEmail: tech@getlago.com
   gemDescription: Enable your ruby application to interact with the Lago API
-  gemHomepage: https://github.com/getlago/lago-ruby
+  gemHomepage: https://github.com/getlago/lago-sdk
   gemLicense: MIT
   gemName: lago_ruby
   gemSummary: Ruby wrapper for the Lago API

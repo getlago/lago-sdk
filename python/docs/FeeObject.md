@@ -1,0 +1,59 @@
+# FeeObject
+
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**lago_id** | **str** | Unique identifier assigned to the fee within the Lago application. This ID is exclusively created by Lago and serves as a unique identifier for the fee’s record within the Lago system. | [optional] 
+**lago_group_id** | **str** | Unique identifier assigned to the group that the fee belongs to | [optional] 
+**lago_invoice_id** | **str** | Unique identifier assigned to the invoice that the fee belongs to | [optional] 
+**lago_true_up_fee_id** | **str** | Unique identifier assigned to the true-up fee when a minimum has been set to the charge. This identifier helps to distinguish and manage the true-up fee associated with the charge, which may be applicable when a minimum threshold or limit is set for the charge amount. | [optional] 
+**lago_true_up_parent_fee_id** | **str** | Unique identifier assigned to the parent fee on which the true-up fee is assigned. This identifier establishes the relationship between the parent fee and the associated true-up fee. | [optional] 
+**lago_subscription_id** | **str** | Unique identifier assigned to the subscription, created by Lago. This field is specifically displayed when the fee type is charge or subscription. | [optional] 
+**lago_customer_id** | **str** | Unique identifier assigned to the customer, created by Lago. This field is specifically displayed when the fee type is charge or subscription. | [optional] 
+**external_customer_id** | **str** | Unique identifier assigned to the customer in your application. This field is specifically displayed when the fee type is charge or subscription. | [optional] 
+**external_subscription_id** | **str** | Unique identifier assigned to the subscription in your application. This field is specifically displayed when the fee type is charge or subscription. | [optional] 
+**invoice_display_name** | **str** | Specifies the name that will be displayed on an invoice. If no value is set for this field, the name of the actual charge will be used as the default display name. | [optional] 
+**amount_cents** | **int** | The cost of this specific fee, excluding any applicable taxes. | 
+**amount_currency** | [**Currency**](Currency.md) |  | 
+**taxes_amount_cents** | **int** | The cost of the tax associated with this specific fee. | 
+**taxes_rate** | **float** | The tax rate associated with this specific fee. | 
+**units** | **str** | The number of units used to charge the customer. This field indicates the quantity or count of units consumed or utilized in the context of the charge. It helps in determining the basis for calculating the fee or cost associated with the usage of the service or product provided to the customer. | 
+**precise_unit_amount** | **str** | The unit amount of the fee per unit, with precision. | 
+**total_amount_cents** | **int** | The cost of this specific fee, including any applicable taxes. | 
+**total_amount_currency** | [**Currency**](Currency.md) |  | 
+**events_count** | **int** | The number of events that have been sent and used to charge the customer. This field indicates the count or quantity of events that have been processed and considered in the charging process. | [optional] 
+**pay_in_advance** | **bool** | Flag that indicates whether the fee was paid in advance. It serves as a boolean value, where &#x60;true&#x60; represents that the fee was paid in advance (straightaway), and &#x60;false&#x60; indicates that the fee was not paid in arrears (at the end of the period). | 
+**invoiceable** | **bool** | Flag that indicates whether the fee was included on the invoice. It serves as a boolean value, where &#x60;true&#x60; represents that the fee was included on the invoice, and &#x60;false&#x60; indicates that the fee was not included on the invoice. | 
+**from_date** | **datetime** | The beginning date of the period that the fee covers. It is applicable only to &#x60;subscription&#x60; and &#x60;charge&#x60; fees. This field indicates the start date of the billing period or subscription period associated with the fee. | [optional] 
+**to_date** | **datetime** | The ending date of the period that the fee covers. It is applicable only to &#x60;subscription&#x60; and &#x60;charge&#x60; fees. This field indicates the end date of the billing period or subscription period associated with the fee. | [optional] 
+**payment_status** | **str** | Indicates the payment status of the fee. It represents the current status of the payment associated with the fee. The possible values for this field are &#x60;pending&#x60;, &#x60;succeeded&#x60;, &#x60;failed&#x60; and &#x60;refunded&#x60;. | 
+**created_at** | **datetime** | The date and time when the fee was created. It is provided in Coordinated Universal Time (UTC) format. | [optional] 
+**succeeded_at** | **datetime** | The date and time when the payment for the fee was successfully processed. It is provided in Coordinated Universal Time (UTC) format. | [optional] 
+**failed_at** | **datetime** | The date and time when the payment for the fee failed to process. It is provided in Coordinated Universal Time (UTC) format. | [optional] 
+**refunded_at** | **datetime** | The date and time when the payment for the fee was refunded. It is provided in Coordinated Universal Time (UTC) format | [optional] 
+**event_transaction_id** | **str** | Unique identifier assigned to the transaction. This field is specifically displayed when the fee type is &#x60;charge&#x60; and the payment for the fee is made in advance (&#x60;pay_in_advance&#x60; is set to &#x60;true&#x60;). | [optional] 
+**item** | [**FeeObjectItem**](FeeObjectItem.md) |  | 
+**applied_taxes** | [**List[FeeAppliedTaxObject]**](FeeAppliedTaxObject.md) | List of fee applied taxes | [optional] 
+
+## Example
+
+```python
+from lago_api.models.fee_object import FeeObject
+
+# TODO update the JSON string below
+json = "{}"
+# create an instance of FeeObject from a JSON string
+fee_object_instance = FeeObject.from_json(json)
+# print the JSON string representation of the object
+print FeeObject.to_json()
+
+# convert the object into a dict
+fee_object_dict = fee_object_instance.to_dict()
+# create an instance of FeeObject from a dict
+fee_object_form_dict = fee_object.from_dict(fee_object_dict)
+```
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

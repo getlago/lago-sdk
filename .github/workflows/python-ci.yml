@@ -1,0 +1,44 @@
+name: '[Python] CI'
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'python/**'
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: ["3.7", "3.8", "3.9", "3.10", "3.11"]
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: ./
+          sparse-checkout: python
+          sparse-checkout-cone-mode: false
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          cd python
+          python -m pip install -r test-requirements.txt
+          python -m pip install -r requirements.txt
+      - name: Run tests
+        run: |
+          cd python
+          python -m pytest --cov=lago_api
