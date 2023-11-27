@@ -38,4 +38,6 @@ jobs:
           cd ruby
           bundle install
       - name: Run tests
-        run: bundle exec rspec
+        run: |
+          cd ruby
+          bundle exec rspec
