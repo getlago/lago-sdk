@@ -1,0 +1,83 @@
+name: '[Go] Generate SDK'
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Version (without v)
+        required: false
+
+jobs:
+  generate-go-sdk:
+    runs-on: ubuntu-latest
+    name: Build Lago Go SDK
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          path: ./
+          sparse-checkout: go
+          sparse-checkout-cone-mode: false
+
+      - name: Checkout Lago OpenApi Repository
+        uses: actions/checkout@v4
+        with:
+          path: openapi
+          repository: getlago/lago-openapi
+          token: ${{ secrets.GH_TOKEN }}
+          ref: main
+          sparse-checkout: openapi.yaml
+          sparse-checkout-cone-mode: false
+
+      - name: Init API version
+        id: init_version
+        run: |
+          OPENAPI_VERSION=`grep '  version:' openapi/openapi.yaml | tail -n1 | cut -c 12-`
+
+          [[ ! -z "${{ github.event.inputs.version }}" ]] && CURRENT_VERSION=${{ github.event.inputs.version }} || CURRENT_VERSION=$OPENAPI_VERSION
+
+          # Set version into generator config
+          sed -i "s/API_VERSION/$CURRENT_VERSION/" go/generator/config.yaml
+
+          echo "api_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Generate Go SDK
+        uses: openapi-generators/openapitools-generator-action@v1
+        with:
+          generator: go
+          openapi-file: openapi/openapi.yaml
+          config-file: go/generator/config.yaml
+          command-args: |
+            -o go
+            --git-user-id getlago
+            --git-repo-id sdk/go
+
+      - name: Open PR with changes on Lago SDK Repository
+        run: |
+          API_VERSION="${{ steps.init_version.outputs.api_version }}"
+          BRANCH_NAME="version-${API_VERSION//./-}"
+          COMMIT_MESSAGE="misc(go): Version v$API_VERSION"
+
+          # Move into go folder
+          cd go
+
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          # Commit and push the changes in a new feature branch
+          git checkout -b $BRANCH_NAME
+          git add .
+          git commit -m "$COMMIT_MESSAGE"
+          git push origin $BRANCH_NAME
+
+          # Store credentials for the Github CLI
+          echo "${{ secrets.GH_TOKEN }}" > access_token.txt
+
+          # Authorize GitHub CLI for the current repository and
+          # create a pull-requests containing the updates.
+          gh auth login --with-token < access_token.txt
+          gh pr create \
+            --body "" \
+            --title "$COMMIT_MESSAGE" \
+            --head "$BRANCH_NAME" \
+            --base "main"

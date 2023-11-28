@@ -1,0 +1,42 @@
+name: '[Go] CI'
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'go/**'
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: ./
+          sparse-checkout: go
+          sparse-checkout-cone-mode: false
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version-file: go/go.mod
+          cache: true
+          cache-dependency-path: go/go.sum
+
+      - name: Install dependencies
+        run: |
+          cd go
+          go mod download
+      - name: Run tests
+        run: |
+          cd go
+          go test test/*
+          go build -v ./
