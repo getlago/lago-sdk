@@ -50,6 +50,8 @@ jobs:
           template-dir: ruby/generator
           command-args: |
             -o ruby
+            --git-user-id getlago
+            --git-repo-id sdk/ruby
 
       - name: Open PR with changes on Lago SDK Repository
         run: |

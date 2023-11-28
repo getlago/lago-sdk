@@ -1,0 +1,11 @@
+globalProperties:
+  apiTests: true
+  modelTests: true
+  gitUserId: getlago
+  gitRepoId: lago-sdk/go
+
+additionalProperties:
+  packageName: lagoapi
+  packageUrl: https://github.com/getlago/sdk/go
+  packageVersion: API_VERSION
+  structPrefix: true
