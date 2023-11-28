@@ -34,7 +34,8 @@ jobs:
       - name: Install dependencies
         run: |
           cd go
-          go mod download
+          go get github.com/stretchr/testify/assert
+          go get golang.org/x/net/context
       - name: Run tests
         run: |
           cd go
