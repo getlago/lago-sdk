@@ -49,7 +49,7 @@ jobs:
           config-file: ruby/generator/config.yaml
           template-dir: ruby/generator
           command-args: |
-            -o ruby
+            -o ruby --git-user-id getlago --git-repo-id sdk/go
 
       - name: Open PR with changes on Lago SDK Repository
         run: |

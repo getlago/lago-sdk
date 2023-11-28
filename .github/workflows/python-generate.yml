@@ -48,7 +48,7 @@ jobs:
           openapi-file: openapi/openapi.yaml
           config-file: python/generator/config.yaml
           command-args: |
-            -o python
+            -o python --git-user-id getlago --git-repo-id sdk/go
 
       - name: Open PR with changes on Lago SDK Repository
         run: |
