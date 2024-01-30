@@ -7,7 +7,7 @@ globalProperties:
 additionalProperties:
   packageName: lagoapi
   packageUrl: https://github.com/getlago/sdk/php
-  packageVersion: API_VERSION
+  packageVersion: 0.54.2
   composerPackageName: getlago/sdk
   developerOrganization: getlago
   developerOrganizationUrl: https://www.getlago.com
