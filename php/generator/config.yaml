@@ -1,0 +1,14 @@
+globalProperties:
+  apiTests: true
+  modelTests: true
+  gitUserId: getlago
+  gitRepoId: lago-sdk/php
+
+additionalProperties:
+  packageName: lagoapi
+  packageUrl: https://github.com/getlago/sdk/php
+  packageVersion: API_VERSION
+  composerPackageName: getlago/sdk
+  developerOrganization: getlago
+  developerOrganizationUrl: https://www.getlago.com
+  licenseName: MIT
