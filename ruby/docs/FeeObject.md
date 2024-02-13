@@ -33,6 +33,7 @@
 | **failed_at** | **Time** | The date and time when the payment for the fee failed to process. It is provided in Coordinated Universal Time (UTC) format. | [optional] |
 | **refunded_at** | **Time** | The date and time when the payment for the fee was refunded. It is provided in Coordinated Universal Time (UTC) format | [optional] |
 | **event_transaction_id** | **String** | Unique identifier assigned to the transaction. This field is specifically displayed when the fee type is &#x60;charge&#x60; and the payment for the fee is made in advance (&#x60;pay_in_advance&#x60; is set to &#x60;true&#x60;). | [optional] |
+| **amount_details** | [**FeeObjectAmountDetails**](FeeObjectAmountDetails.md) |  | [optional] |
 | **item** | [**FeeObjectItem**](FeeObjectItem.md) |  |  |
 | **applied_taxes** | [**Array&lt;FeeAppliedTaxObject&gt;**](FeeAppliedTaxObject.md) | List of fee applied taxes | [optional] |
 
@@ -71,6 +72,7 @@ instance = LagoAPI::FeeObject.new(
   failed_at: 2022-08-24T14:58:59Z,
   refunded_at: 2022-08-24T14:58:59Z,
   event_transaction_id: transaction_1234567890,
+  amount_details: null,
   item: null,
   applied_taxes: null
 )

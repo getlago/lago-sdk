@@ -15,6 +15,8 @@
 | **city** | **String** | The city of your organization’s billing address. | [optional] |
 | **legal_name** | **String** | The legal name of your organization. | [optional] |
 | **legal_number** | **String** | The legal number of your organization. | [optional] |
+| **document_numbering** | **String** | This parameter configures the method of incrementing invoice numbers for your customers.  - &#x60;per_customer&#x60;: Invoice numbers are incremented individually for each customer. This means every customer will have their own unique sequence of invoice numbers, separate from other customers. It ensures that each customer&#39;s invoice numbers follow a distinct and isolated numbering pattern. - &#x60;per_organization&#x60;: Invoice number incrementation is made across your entire organization. Rather than individual sequences for each customer, all invoices within the organization follow a single, unified numbering system. This creates a continuous and organization-wide sequence for all invoice numbers. Invoices are incremented per month (dynamic value used is YYYYMM), and invoice numbers are reset at the end of each month.  The default value for &#x60;document_numbering&#x60; is set to &#x60;per_customer&#x60;, meaning that, unless changed, invoice numbers will increment uniquely for each customer. | [optional] |
+| **document_number_prefix** | **String** | Sets the prefix for invoices and credit notes. Default is the first three letters of your organization name plus the last four digits of your organization ID. Customizable within 1-10 characters, and automatically capitalized by Lago. | [optional] |
 | **net_payment_term** | **Integer** | The net payment term, expressed in days, specifies the duration within which a customer is expected to remit payment after the invoice is finalized. | [optional] |
 | **tax_identification_number** | **String** | The tax identification number of your organization. | [optional] |
 | **timezone** | [**Timezone**](Timezone.md) |  | [optional] |
@@ -38,6 +40,8 @@ instance = LagoAPI::OrganizationUpdateInputOrganization.new(
   city: New York,
   legal_name: null,
   legal_number: null,
+  document_numbering: per_customer,
+  document_number_prefix: ORG-1234,
   net_payment_term: 30,
   tax_identification_number: US123456789,
   timezone: null,

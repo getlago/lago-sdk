@@ -11,6 +11,7 @@
 | **granted_credits** | **String** | The number of free granted credits. Required only if there is no paid credits. | [optional] |
 | **external_customer_id** | **String** | The customer external unique identifier (provided by your own application) |  |
 | **expiration_at** | **Time** | The date and time that determines when the wallet will expire. It follows the ISO 8601 datetime format and is expressed in Coordinated Universal Time (UTC). | [optional] |
+| **recurring_transaction_rules** | [**Array&lt;WalletCreateInputWalletRecurringTransactionRulesInner&gt;**](WalletCreateInputWalletRecurringTransactionRulesInner.md) | List of recurring transaction rules. Currently, we only allow one recurring rule per wallet. | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = LagoAPI::WalletCreateInputWallet.new(
   paid_credits: 20.0,
   granted_credits: 10.0,
   external_customer_id: hooli_1234,
-  expiration_at: 2022-07-07T23:59:59Z
+  expiration_at: 2022-07-07T23:59:59Z,
+  recurring_transaction_rules: null
 )
 ```
 

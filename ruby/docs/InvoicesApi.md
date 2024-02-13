@@ -12,6 +12,7 @@ All URIs are relative to *https://api.getlago.com/api/v1*
 | [**refresh_invoice**](InvoicesApi.md#refresh_invoice) | **PUT** /invoices/{lago_id}/refresh | Refresh a draft invoice |
 | [**retry_payment**](InvoicesApi.md#retry_payment) | **POST** /invoices/{lago_id}/retry_payment | Retry an invoice payment |
 | [**update_invoice**](InvoicesApi.md#update_invoice) | **PUT** /invoices/{lago_id} | Update an invoice |
+| [**void_invoice**](InvoicesApi.md#void_invoice) | **POST** /invoices/{lago_id}/void | Void an invoice |
 
 
 ## create_invoice
@@ -578,5 +579,74 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## void_invoice
+
+> <Invoice> void_invoice(lago_id)
+
+Void an invoice
+
+This endpoint is used for voiding an invoice. You can void an invoice only when it's in a `finalized` status, and the payment status is not `succeeded`.
+
+### Examples
+
+```ruby
+require 'time'
+require 'lago_ruby'
+# setup authorization
+LagoAPI.configure do |config|
+  # Configure Bearer authorization: bearerAuth
+  config.access_token = 'YOUR_BEARER_TOKEN'
+end
+
+api_instance = LagoAPI::InvoicesApi.new
+lago_id = '1a901a90-1a90-1a90-1a90-1a901a901a90' # String | Unique identifier assigned to the invoice within the Lago application. This ID is exclusively created by Lago and serves as a unique identifier for the invoice’s record within the Lago system.
+
+begin
+  # Void an invoice
+  result = api_instance.void_invoice(lago_id)
+  p result
+rescue LagoAPI::ApiError => e
+  puts "Error when calling InvoicesApi->void_invoice: #{e}"
+end
+```
+
+#### Using the void_invoice_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Invoice>, Integer, Hash)> void_invoice_with_http_info(lago_id)
+
+```ruby
+begin
+  # Void an invoice
+  data, status_code, headers = api_instance.void_invoice_with_http_info(lago_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Invoice>
+rescue LagoAPI::ApiError => e
+  puts "Error when calling InvoicesApi->void_invoice_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **lago_id** | **String** | Unique identifier assigned to the invoice within the Lago application. This ID is exclusively created by Lago and serves as a unique identifier for the invoice’s record within the Lago system. |  |
+
+### Return type
+
+[**Invoice**](Invoice.md)
+
+### Authorization
+
+[bearerAuth](../README.md#bearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
