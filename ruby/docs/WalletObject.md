@@ -19,6 +19,11 @@
 | **last_balance_sync_at** | **Time** | The date and time of the last balance top-up. It follows the ISO 8601 datetime format and is expressed in Coordinated Universal Time (UTC). | [optional] |
 | **last_consumed_credit_at** | **Time** | The date and time of the last credits consumption. It follows the ISO 8601 datetime format and is expressed in Coordinated Universal Time (UTC). | [optional] |
 | **terminated_at** | **Time** | The date of terminaison of the wallet. It follows the ISO 8601 datetime format and is expressed in Coordinated Universal Time (UTC). | [optional] |
+| **recurring_transaction_rules** | [**Array&lt;WalletObjectRecurringTransactionRulesInner&gt;**](WalletObjectRecurringTransactionRulesInner.md) | List of recurring transaction rules. Currently, we only allow one recurring rule per wallet. | [optional] |
+| **ongoing_balance_cents** | **Integer** | The wallet ongoing balance expressed in cents. |  |
+| **ongoing_usage_balance_cents** | **Integer** | The wallet ongoing usage balance expressed in cents. |  |
+| **credits_ongoing_balance** | **String** | The wallet ongoing balance expressed in credits. |  |
+| **credits_ongoing_usage_balance** | **String** | The wallet ongoing usage balance expressed in credits. |  |
 
 ## Example
 
@@ -40,7 +45,12 @@ instance = LagoAPI::WalletObject.new(
   expiration_at: null,
   last_balance_sync_at: 2022-04-29T08:59:51Z,
   last_consumed_credit_at: 2022-04-29T08:59:51Z,
-  terminated_at: 2022-09-14T16:35:31Z
+  terminated_at: 2022-09-14T16:35:31Z,
+  recurring_transaction_rules: null,
+  ongoing_balance_cents: 800,
+  ongoing_usage_balance_cents: 200,
+  credits_ongoing_balance: 8.0,
+  credits_ongoing_usage_balance: 2.0
 )
 ```
 

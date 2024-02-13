@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **event** | [**EventBatchInputEvent**](EventBatchInputEvent.md) |  |  |
+| **events** | [**Array&lt;EventInput&gt;**](EventInput.md) |  |  |
 
 ## Example
 
@@ -12,7 +12,7 @@
 require 'lago_ruby'
 
 instance = LagoAPI::EventBatchInput.new(
-  event: null
+  events: null
 )
 ```
 

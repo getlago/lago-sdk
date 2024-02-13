@@ -15,6 +15,7 @@
 | **free_units_per_total_aggregation** | **String** | The transaction amount that is not impacted by the &#x60;percentage&#x60; rate and fixed fee in a percentage charge model. This field indicates the portion of the transaction amount that is exempt from the calculation of charges based on the specified percentage rate and fixed fee. | [optional] |
 | **per_transaction_max_amount** | **String** | Specifies the maximum allowable spending for a single transaction. Working as a transaction cap. | [optional] |
 | **per_transaction_min_amount** | **String** | Specifies the minimum allowable spending for a single transaction. Working as a transaction floor. | [optional] |
+| **grouped_by** | **Array&lt;String&gt;** | The list of event properties that are used to group the events on the invoice for a &#x60;standard&#x60; charge model. | [optional] |
 | **volume_ranges** | [**Array&lt;ChargePropertiesVolumeRangesInner&gt;**](ChargePropertiesVolumeRangesInner.md) | Volume ranges, sorted from bottom to top tiers, used for a &#x60;volume&#x60; charge model. | [optional] |
 
 ## Example
@@ -34,6 +35,7 @@ instance = LagoAPI::GroupPropertiesObjectValues.new(
   free_units_per_total_aggregation: 500,
   per_transaction_max_amount: 3.75,
   per_transaction_min_amount: 1.75,
+  grouped_by: [agent_name],
   volume_ranges: null
 )
 ```

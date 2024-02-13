@@ -16,7 +16,7 @@ All URIs are relative to *https://api.getlago.com/api/v1*
 
 Batch multiple events
 
-This endpoint is used for transmitting a batch of usage measurement events to multiple subscriptions for a single customer.
+This endpoint is used to send a batch of usage records.
 
 ### Examples
 
@@ -30,7 +30,7 @@ LagoAPI.configure do |config|
 end
 
 api_instance = LagoAPI::EventsApi.new
-event_batch_input = LagoAPI::EventBatchInput.new({event: LagoAPI::EventBatchInputEvent.new({transaction_id: 'transaction_1234567890', external_subscription_ids: ["sub_1234567890", "sub_0987654321"], code: 'storage'})}) # EventBatchInput | Batch events payload
+event_batch_input = LagoAPI::EventBatchInput.new({events: [LagoAPI::EventInput.new({event: LagoAPI::EventInputEvent.new({transaction_id: 'transaction_1234567890', code: 'storage'})})]}) # EventBatchInput | Batch events payload
 
 begin
   # Batch multiple events

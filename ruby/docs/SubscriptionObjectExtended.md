@@ -20,7 +20,7 @@
 | **terminated_at** | **Time** | The termination date of the subscription. This field is not null when the subscription is &#x60;terminated&#x60;. This date should be provided in ISO 8601 datetime format and expressed in Coordinated Universal Time (UTC) | [optional] |
 | **previous_plan_code** | **String** | The code identifying the previous plan associated with this subscription. | [optional] |
 | **next_plan_code** | **String** | The code identifying the next plan in the case of a downgrade. | [optional] |
-| **downgrade_plan_date** | **Time** | The date when the plan will be downgraded, represented in ISO 8601 date format. | [optional] |
+| **downgrade_plan_date** | **Date** | The date when the plan will be downgraded, represented in ISO 8601 date format. | [optional] |
 | **plan** | [**PlanObject**](PlanObject.md) |  | [optional] |
 
 ## Example
@@ -45,7 +45,7 @@ instance = LagoAPI::SubscriptionObjectExtended.new(
   terminated_at: 2022-09-14T16:35:31Z,
   previous_plan_code: null,
   next_plan_code: null,
-  downgrade_plan_date: null,
+  downgrade_plan_date: Sat Apr 30 00:00:00 UTC 2022,
   plan: null
 )
 ```

@@ -12,7 +12,7 @@ additionalProperties:
   gemLicense: MIT
   gemName: lago_ruby
   gemSummary: Ruby wrapper for the Lago API
-  gemVersion: API_VERSION
+  gemVersion: 0.56.0-beta
 
   appName: Lago API
   docHomepage: https://doc.getlago.com

@@ -10,7 +10,8 @@
 | **amount_currency** | [**Currency**](Currency.md) |  |  |
 | **charge** | [**CustomerChargeUsageObjectCharge**](CustomerChargeUsageObjectCharge.md) |  |  |
 | **billable_metric** | [**CustomerChargeUsageObjectBillableMetric**](CustomerChargeUsageObjectBillableMetric.md) |  |  |
-| **groups** | [**Array&lt;CustomerChargeUsageObjectGroupsInner&gt;**](CustomerChargeUsageObjectGroupsInner.md) | Array of group object, representing multiple dimensions for a charge item. |  |
+| **groups** | [**Array&lt;CustomerChargeGroupsUsageObjectInner&gt;**](CustomerChargeGroupsUsageObjectInner.md) | Array of group object, representing multiple dimensions for a charge item. |  |
+| **grouped_usage** | [**Array&lt;CustomerChargeGroupedUsageObjectInner&gt;**](CustomerChargeGroupedUsageObjectInner.md) | Array of aggregated fees, grouped by the event properties defined in a &#x60;standard&#x60; charge model. | [optional] |
 
 ## Example
 
@@ -24,7 +25,8 @@ instance = LagoAPI::CustomerChargeUsageObject.new(
   amount_currency: null,
   charge: null,
   billable_metric: null,
-  groups: null
+  groups: null,
+  grouped_usage: null
 )
 ```
 
